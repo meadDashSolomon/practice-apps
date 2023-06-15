@@ -20,9 +20,14 @@ let save = (term) => {
   Glossary.create(term);
 }
 
+let fetchTerms = () => {
+  return Glossary.find({});
+}
+
 // 3. Export the models
 module.exports = {
   Glossary: Glossary,
-  save: save
+  save: save,
+  fetchTerms: fetchTerms
 };
 // 4. Import the models into any modules that need them

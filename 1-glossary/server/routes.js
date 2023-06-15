@@ -3,6 +3,6 @@ let controller = require("./controllers/controllers.js");
 
 routes.post("/def", controller.definition.addTerm)
 
-// routes.get()
+routes.get("/def", controller.display.displayTerms)
 
 module.exports = routes;
