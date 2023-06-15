@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Search = ({ onSearch }) => {
+const AddTerm = ({ onAddTerm }) => {
 
   const[term, setTerm] = useState('');
 
@@ -8,8 +8,8 @@ const Search = ({ onSearch }) => {
     setTerm(e.target.value);
 }
 
-const search = () => {
-  onSearch(term);
+const addTerm = () => {
+  onAddTerm(term);
 }
 
 return (
@@ -17,9 +17,9 @@ return (
     <h4>Add more terms!</h4>
     Enter a word: <input value={term}
     onChange={onChange}/>
-    <button onClick={search}> Add Terms </button>
+    <button onClick={addTerm}> Add Terms </button>
   </div>
 );
 };
 
-export default Search;
+export default AddTerm;

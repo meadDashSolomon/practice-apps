@@ -1,25 +1,17 @@
 require("dotenv").config();
 const express = require("express");
+const app = express();
 const path = require("path");
-
+let routes = require("./routes.js");
 
 
 // require statement to import Glossary
 
-
-
-const app = express();
-
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.json());
+app.use("/", routes);
 
-/****
- *
- *
- * Other routes here....
- *
- *
- */
 
-app.listen(process.env.PORT || 3000);
-console.log(`Listening at http://localhost:${process.env.PORT}`);
+app.listen(3000);
+console.log(`Listening at http://localhost:3000`);

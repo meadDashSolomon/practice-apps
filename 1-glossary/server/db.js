@@ -12,10 +12,17 @@ const glossarySchema = new Schema ({
   definition: String
 })
 
-const Glossary = mongoose.model('Glossary', glossarySchema);
+let Glossary = mongoose.model('Glossary', glossarySchema);
 
 // consider making and exporting a save function
+let save = (term) => {
+  console.log("TERM::::::::", term);
+  Glossary.create(term);
+}
 
 // 3. Export the models
-module.exports.Glossary = Glossary;
+module.exports = {
+  Glossary: Glossary,
+  save: save
+};
 // 4. Import the models into any modules that need them
