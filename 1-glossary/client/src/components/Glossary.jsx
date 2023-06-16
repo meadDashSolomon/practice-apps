@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const DisplayGlossary = ({ termsAndDefinitions }) => {
+const Glossary = ({ onDisplayGlossary }) => {
+
+
 
   return (
     <div className="glossaryContainer">
       <h4> Glossary List Component </h4>
       <ul>
-        { termsAndDefinitions.map((termAndDef) => {
+        { onDisplayGlossary.map((termAndDef) => {
           return (
             <li>
               { termAndDef }
@@ -17,4 +19,4 @@ const DisplayGlossary = ({ termsAndDefinitions }) => {
     </div>);
 }
 
-export default DisplayGlossary;
+export default Glossary;

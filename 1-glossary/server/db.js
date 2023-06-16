@@ -16,8 +16,8 @@ let Glossary = mongoose.model('Glossary', glossarySchema);
 
 // consider making and exporting a save function
 let save = (term) => {
-  console.log("TERM::::::::", term);
-  Glossary.create(term);
+  console.log("REACHED SAVE FUNCTION W/ TERM::::::::", term);
+  return Glossary.create(term);
 }
 
 let fetchTerms = () => {

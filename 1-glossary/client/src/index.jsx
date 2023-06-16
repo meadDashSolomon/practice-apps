@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 // import { render } from "react-dom";
 import ReactDOM from 'react-dom';
 import Glossary from "./components/Glossary.jsx";
@@ -6,11 +6,15 @@ import AddTerm from "./components/AddTerm.jsx";
 import axios from "axios";
 
 const App = () => {
+
+  const [entries, setEntries] = useState([]);
+
   const addTerm = (term, definition) => {
     console.log(term, definition);
     axios.post('http://localhost:3000/def', { term: term, definition: definition })
-    .then(function (response) {
-      console.log("POST RESPONSE:::::::", response);
+    .then(() => {
+      console.log("POST REQUEST SUCCESFUL, INVOKING GET REQ");
+      displayGlossary();
     })
     .catch(function(err) {
       console.log(err);
@@ -20,7 +24,8 @@ const App = () => {
   const displayGlossary = () => {
     axios.get("http://localhost:3000/def")
     .then((response) => {
-      console.log("GET RESPONSE:::::::", response);
+      console.log("GET RESPONSE.DATA:::::::", response.data);
+      setEntries(response.data);
     })
     .catch(function(err) {
       console.log(err);
@@ -32,7 +37,7 @@ const App = () => {
     <div>
       <h1>My Glossary</h1>
       <AddTerm onAddTerm={addTerm}/>
-      {/* <Glossary onDisplayGlossary={displayGlossary}/> */}
+      <Glossary onDisplayGlossary={entries}/>
     </div>
   )
 }
