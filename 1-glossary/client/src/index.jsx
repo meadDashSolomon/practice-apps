@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { render } from "react-dom";
 import ReactDOM from 'react-dom';
 import Glossary from "./components/Glossary.jsx";
@@ -32,6 +32,9 @@ const App = () => {
     })
     };
 
+    useEffect(() => {
+      displayGlossary()
+    }, []);
 
   return (
     <div>

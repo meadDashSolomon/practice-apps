@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Glossary = ({ onDisplayGlossary }) => {
 
-
+  // const[entry, setEntry] = use
 
   return (
     <div className="glossaryContainer">
       <h4> Glossary List Component </h4>
       <ul>
-        { onDisplayGlossary.map((termAndDef) => {
+        { onDisplayGlossary.map((entry) => {
           return (
             <li>
-              { termAndDef }
+              { `Term: ${entry.term}......................Definition: ${entry.definition}` }
+              <button> Delete </button>
+              <button> Edit </button>
             </li>
           )
         })}
@@ -20,3 +22,5 @@ const Glossary = ({ onDisplayGlossary }) => {
 }
 
 export default Glossary;
+
+
