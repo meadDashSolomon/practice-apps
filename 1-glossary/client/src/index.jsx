@@ -4,10 +4,16 @@ import ReactDOM from 'react-dom';
 import Glossary from "./components/Glossary.jsx";
 import AddTerm from "./components/AddTerm.jsx";
 import axios from "axios";
+import Modal from "./components/Edit.jsx"
 
 const App = () => {
 
   const [entries, setEntries] = useState([]);
+  const[showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  }
 
   const addTerm = (term, definition) => {
     console.log(term, definition);
@@ -40,7 +46,8 @@ const App = () => {
     <div>
       <h1>My Glossary</h1>
       <AddTerm onAddTerm={addTerm}/>
-      <Glossary onDisplayGlossary={entries}/>
+      <Glossary onDisplayGlossary={entries} onToggleModal={toggleModal}/>
+      <Modal showModal={showModal} toggleModal={toggleModal} />
     </div>
   )
 }

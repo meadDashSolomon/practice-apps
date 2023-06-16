@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Glossary = ({ onDisplayGlossary }) => {
-
-  // const[entry, setEntry] = use
+const Glossary = ({ onDisplayGlossary, onToggleModal }) => {
 
   return (
     <div className="glossaryContainer">
@@ -13,7 +11,7 @@ const Glossary = ({ onDisplayGlossary }) => {
             <li>
               { `Term: ${entry.term}......................Definition: ${entry.definition}` }
               <button> Delete </button>
-              <button> Edit </button>
+              <button onClick={onToggleModal}> Edit </button>
             </li>
           )
         })}
