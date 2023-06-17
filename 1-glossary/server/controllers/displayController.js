@@ -7,5 +7,8 @@ module.exports = {
       console.log("DISPLAY CONTROLLER REC'D TERMS AND DEFS FROM GET REQ::::::", termsAndDefinitions)
       res.status(200).send(termsAndDefinitions);
     })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 }

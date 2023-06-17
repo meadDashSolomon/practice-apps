@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const Glossary = ({ onDisplayGlossary, onToggleModal }) => {
+const Glossary = ({ onDisplayGlossary, onToggleModal, setCurrentEdit, onDelEntry }) => {
+
+  const handleDeleteClick = (event) => {
+    const termId = event.currentTarget.dataset.id;
+    onDelEntry(termId);
+  }
 
   return (
     <div className="glossaryContainer">
@@ -10,8 +15,10 @@ const Glossary = ({ onDisplayGlossary, onToggleModal }) => {
           return (
             <li>
               { `Term: ${entry.term}......................Definition: ${entry.definition}` }
-              <button> Delete </button>
-              <button onClick={onToggleModal}> Edit </button>
+              <button data-id={entry._id} onClick={handleDeleteClick}> Delete </button>
+              <button onClick={()=>{
+                onToggleModal(entry._id);
+              }}> Edit </button>
             </li>
           )
         })}

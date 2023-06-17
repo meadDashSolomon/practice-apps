@@ -7,6 +7,8 @@ module.exports = {
     .then(() => {
       res.status(200).send("TERM SAVED");
     })
-    // add catch and console log
+    .catch((err) => {
+      console.log(err);
+    })
   }
 }

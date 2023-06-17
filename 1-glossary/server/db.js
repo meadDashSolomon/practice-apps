@@ -24,10 +24,35 @@ let fetchTerms = () => {
   return Glossary.find({});
 }
 
+let update = (_id, term, definition) => {
+  return Glossary.findOneAndUpdate(
+    { _id },
+    { term: term, definition: definition }
+  )
+  .then((updatedEntry => {
+    console.log("ENTRY UPDATE SUCCESSFUL:::::::", updatedEntry);
+  }))
+  .catch(err => {
+    console.log(err);
+  })
+}
+
+let deleteEntry = (_id) => {
+  return Glossary.findByIdAndDelete(_id)
+  .then((deletedEntry) => {
+    console.log("ENTRY DELETION SUCCESSFULL::::::", deletedEntry)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
 // 3. Export the models
 module.exports = {
   Glossary: Glossary,
   save: save,
-  fetchTerms: fetchTerms
+  fetchTerms: fetchTerms,
+  update: update,
+  deleteEntry: deleteEntry
 };
 // 4. Import the models into any modules that need them
